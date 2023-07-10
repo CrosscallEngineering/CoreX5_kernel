@@ -1,0 +1,1 @@
+cmd_scripts/kconfig/conf := /root/work2/amv_l771s/AMV/Nicobar_la_2_0_2/L771/L771/android/prebuilts/clang/host/linux-x86/clang-r383902b1/bin/clang  -o scripts/kconfig/conf scripts/kconfig/conf.o scripts/kconfig/zconf.tab.o  

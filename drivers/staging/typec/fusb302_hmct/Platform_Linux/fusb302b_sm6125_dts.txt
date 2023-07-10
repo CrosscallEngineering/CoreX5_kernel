@@ -1,0 +1,38 @@
+qrd.dtsi
+
+&qupv3_sel_i2c {
+    status = "ok";
+	fusb302_pdphy: fusb30x@22{
+                compatible = "fairchild,fusb302";
+                reg = <0x22>;
+                status = "okay";
+                fairchild,int_n = <&tlmm 132 0>;
+				interrupt-parent = <&tlmm>;
+				interrupts = <132 0>;
+				pinctrl-names = "fairchild_enable_int";
+                pinctrl-0 = <&fairchild_int_gpio>;
+				vbus-supply = <&smb5_vbus>;
+	};
+};
+
+pinctrl.dtsi
+
+fairchild_int_gpio: fairchild_int_gpio {
+		mux {
+				pins = "gpio132";
+				function = "gpio";
+		};
+		config {
+				pins = "gpio132";
+				drive-strength = <2>;
+				bias-pull-up;
+				input-enable;		
+		};
+
+};
+
+pmi632.dtsi
+
+smb5_vbus: qcom,smb5-vbus {
+		regulator-name = "smb5-vbus";
+};

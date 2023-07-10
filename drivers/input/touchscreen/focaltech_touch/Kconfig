@@ -1,0 +1,34 @@
+#
+# Focaltech Touchscreen driver configuration
+#
+
+#config TOUCHSCREEN_FTS
+#    bool "Focaltech Touchscreen"
+ #   default n
+  #  help
+    #  Say Y here if you have Focaltech touch panel.
+     # If unsure, say N.
+      
+config TOUCHSCREEN_FTS_DIRECTORY
+    string "Focaltech ts directory name"
+    default "focaltech_touch"
+    depends on TOUCHSCREEN_FTS
+config TOUCHSCREEN_FTS_GLOVE
+       bool "FocalTech touchscreens glove mode function realized in driver"
+       depends on TOUCHSCREEN_FTS
+       help
+         Say Y here if you need a FT5526-003 glove mode in driver.
+	 else say N
+config TOUCHSCREEN_FTS_GESTURE
+       bool "FocalTech touchscreens gesture function"
+       depends on TOUCHSCREEN_FTS
+       help
+         Say Y here if you need a FT5526-003 touchscreen gesture function.
+	 else say N
+config TOUCHSCREEN_FTS_FH
+       bool "FocalTech touchscreens FH support."
+       depends on TOUCHSCREEN_USB_CHECK
+       help
+         Say Y here if you need a FT5526-003 touchscreen FH function.
+      #else say N
+ 

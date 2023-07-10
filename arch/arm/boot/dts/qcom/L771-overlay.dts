@@ -1,0 +1,52 @@
+/* Copyright (c) 2018, 2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/qcom,gcc-trinket.h>
+#include "L771/trinket-qrd.dtsi"
+
+/ {
+	model = "QRD";
+	compatible = "qcom,trinket-qrd", "qcom,trinket", "qcom,qrd";
+	qcom,msm-id = <394 0x0>;
+	qcom,board-id = <11 0>;
+};
+
+/*Displayport configration*/
+&sde_dp {
+	status = "ok";
+	pinctrl-names = "mdss_dp_active", "mdss_dp_sleep";
+	pinctrl-0 = <&sde_dp_aux_active &sde_dp_usbplug_cc_active>;
+	pinctrl-1 = <&sde_dp_aux_suspend &sde_dp_usbplug_cc_suspend>;
+	qcom,aux-en-gpio = <&tlmm 124 0>;
+	qcom,aux-sel-gpio = <&tlmm 123 0>;
+	qcom,dp-gpio-aux-switch;
+};
+
+&mdss_dp_pll {
+	status = "ok";
+};
+
+&mdss_mdp {
+	connectors = <&sde_wb &sde_dsi &sde_dp>;
+};
+
+&usb_qmp_phy {
+	reg = <0x01615000 0x1000>,
+		<0x03cb244 0x4>,
+		<0x03cb248 0x4>;
+	reg-names = "qmp_phy_base",
+		"vls_clamp_reg",
+		"tcsr_usb3_dp_phymode";
+};

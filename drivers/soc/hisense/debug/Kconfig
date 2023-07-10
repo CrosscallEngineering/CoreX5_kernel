@@ -1,0 +1,7 @@
+config PRINTK_PROCESS_INFO
+	bool "add print process pid and name"
+	depends on MACH_HISENSE_SMARTPHONE
+	default n
+	help
+	  Enable it when want to add the process info for printk
+

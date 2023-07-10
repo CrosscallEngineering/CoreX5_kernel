@@ -1,0 +1,10 @@
+#
+# SPRD Sensor Hub drivers configuration
+#
+
+config SENSOR_HALL
+	bool "Provide Hall Device Support"
+	default n
+	help
+	  Say Y here, select hall chip .
+

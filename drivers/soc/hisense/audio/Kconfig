@@ -1,0 +1,7 @@
+
+config HISENSE_ACCESS_DIAG_PARTITION
+	depends on HISENSE_DEBUG_CTRL
+	bool "get info from diag partition"
+	default y
+	help
+	  Provide a methed to get info from diag partition.
